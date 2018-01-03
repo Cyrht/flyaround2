@@ -1,21 +1,13 @@
-wcs_coav_user:
-    resource: "@WCSCoavBundle/Controller/UserController.php"
-    type:     annotation
-
 wcs_coav_terrain:
     resource: "@WCSCoavBundle/Controller/TerrainController.php"
-    type:     annotation
-
-wcs_coav_terrain:
-    resource: "@WCSCoavBundle/Controller/TerrainController.php"
-    type:     annotation
-
-wcs_coav_flight:
-    resource: "@WCSCoavBundle/Controller/FlightController.php"
     type:     annotation
 
 wcs_coav_reservation:
     resource: "@WCSCoavBundle/Controller/ReservationController.php"
+    type:     annotation
+
+wcs_coav_flight:
+    resource: "@WCSCoavBundle/Controller/FlightController.php"
     type:     annotation
 
 wcs_coav_plane_model:
@@ -25,4 +17,3 @@ wcs_coav_plane_model:
 wcs_coav:
     resource: "@WCSCoavBundle/Resources/config/routing.yml"
     prefix:   /
-

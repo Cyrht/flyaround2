@@ -31,7 +31,7 @@ class Reservation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="publicationDate", type="datetimetz")
+     * @ORM\Column(name="publicationDate", type="datetime")
      */
     private $publicationDate;
 
@@ -39,7 +39,7 @@ class Reservation
      * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $passengers;
+    private $passenger;
 
     /**
      * @var Flight $flight
@@ -135,7 +135,7 @@ class Reservation
      */
     public function getPassenger()
     {
-        return $this->passenger;
+        return $this->passengers;
     }
 
     /**
