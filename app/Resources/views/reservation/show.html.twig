@@ -3,32 +3,35 @@
 {% block body %}
     <h1>Reservation</h1>
 
-    <table>
+    <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ reservation.id }}</td>
-            </tr>
-            <tr>
-                <th>Nbreservedseats</th>
-                <td>{{ reservation.nbReservedSeats }}</td>
-            </tr>
-            <tr>
-                <th>Publicationdate</th>
-                <td>{{ reservation.publicationDate }}</td>
-            </tr>
-            <tr>
-                <th>Passenger</th>
-                <td>{{ reservation.passenger }}</td>
-            </tr>
-            <tr>
-                <th>Flight</th>
-                <td>{{ reservation.flight }}</td>
-            </tr>
-            <tr>
-                <th>Wasdone</th>
-                <td>{% if reservation.wasDone %}Yes{% else %}No{% endif %}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ reservation.id }}</td>
+        </tr>
+        <tr>
+            <th>Nbreservedseats</th>
+            <td>{{ reservation.nbReservedSeats }}</td>
+        </tr>
+        <tr>
+            <th>Publicationdate</th>
+            <td>{% if reservation.publicationDate %}{{ reservation.publicationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Passenger</th>
+            <td>
+                {% for passenger in reservation.passenger %}
+                    {{ passenger.username }}
+                {% endfor %}
+            </td>            </tr>
+        <tr>
+            <th>Flight</th>
+            <td>{{ reservation.flight }}</td>
+        </tr>
+        <tr>
+            <th>Wasdone</th>
+            <td>{% if reservation.wasDone %}Yes{% else %}No{% endif %}</td>
+        </tr>
         </tbody>
     </table>
 
@@ -41,7 +44,7 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

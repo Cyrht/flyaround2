@@ -1,3 +1,7 @@
+wcs_coav_review:
+    resource: "@WCSCoavBundle/Controller/ReviewController.php"
+    type:     annotation
+
 wcs_coav_terrain:
     resource: "@WCSCoavBundle/Controller/TerrainController.php"
     type:     annotation
@@ -12,6 +16,10 @@ wcs_coav_flight:
 
 wcs_coav_plane_model:
     resource: "@WCSCoavBundle/Controller/PlaneModelController.php"
+    type:     annotation
+
+wcs_coav_user:
+    resource: "@WCSCoavBundle/Controller/UserController.php"
     type:     annotation
 
 wcs_coav:
