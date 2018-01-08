@@ -17,8 +17,9 @@ class Flight
      */
     public function __toString()
     {
-        return $this->takeOffTime->format('Y-m-d H:i:s');
+        return $this->departure . " -> " . $this->arrival;
     }
+
     /**
      * @var int
      *

@@ -12,6 +12,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Review
 {
+    /* Adding personal methods */
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->id . " - " .  $this->note;
+    }
+
+
     /**
      * @var int
      *

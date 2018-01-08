@@ -13,10 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class User
 {
     /* Adding personal methods */
+
+    /**
+     * @return string
+     */
     public function __toString()
     {
-        return $this->firstName . " " . $this->lastName;
+        return $this->id . " - " . $this->userName;
     }
+
     /**
      * @var int
      *
@@ -113,7 +118,7 @@ class User
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", mappedBy="passengers")
+     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", mappedBy="passenger")
      * @ORM\JoinColumn(nullable=false)
      */
     private $reservations;

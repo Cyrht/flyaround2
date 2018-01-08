@@ -17,9 +17,8 @@ class PlaneModel
      */
     public function __toString()
     {
-        return $this->model;
+        return $this->id . " - " . $this->model;
     }
-
 
     /**
      * @var int
