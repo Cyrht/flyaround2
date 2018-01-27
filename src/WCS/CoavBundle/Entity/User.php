@@ -3,23 +3,33 @@
 namespace WCS\CoavBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="WCS\CoavBundle\Repository\UserRepository")
  */
-class User
+class User extends BaseUser
 {
     /* Adding personal methods */
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * @return string
      */
     public function __toString()
     {
-        return $this->id . " - " . $this->userName;
+        return $this->id . " - " . $this->firstName;
     }
 
     /**
@@ -29,14 +39,7 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="userName", type="string", length=32)
-     */
-    private $userName;
+    protected $id;
 
     /**
      * @var string
@@ -48,21 +51,15 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string", length=32)
+     * @ORM\Column(name="last_name")
      */
     private $lastName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=64)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="phoneNumber", type="string", length=32)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $phoneNumber;
 
@@ -98,7 +95,6 @@ class User
      * @var Review $reviews
      *
      * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Review")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $reviews;
 
@@ -123,40 +119,6 @@ class User
      */
     private $reservations;
 
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set userName
-     *
-     * @param string $userName
-     *
-     * @return User
-     */
-    public function setUserName($userName)
-    {
-        $this->userName = $userName;
-
-        return $this;
-    }
-
-    /**
-     * Get userName
-     *
-     * @return string
-     */
-    public function getUserName()
-    {
-        return $this->userName;
-    }
 
     /**
      * Set firstName
@@ -204,30 +166,6 @@ class User
     public function getLastName()
     {
         return $this->lastName;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**
@@ -343,35 +281,11 @@ class User
     /**
      * Get note
      *
-     * @return int
+     * @return integer
      */
     public function getNote()
     {
         return $this->note;
-    }
-
-    /**
-     * Set reviews
-     *
-     * @param integer $reviews
-     *
-     * @return User
-     */
-    public function setReviews($reviews)
-    {
-        $this->reviews = $reviews;
-
-        return $this;
-    }
-
-    /**
-     * Get reviews
-     *
-     * @return \WCS\CoavBundle\Entity\Review
-     */
-    public function getReviews()
-    {
-        return $this->reviews;
     }
 
     /**
@@ -391,7 +305,7 @@ class User
     /**
      * Get isACertifiedPilot
      *
-     * @return int
+     * @return integer
      */
     public function getIsACertifiedPilot()
     {
@@ -421,12 +335,29 @@ class User
     {
         return $this->isActive;
     }
+
     /**
-     * Constructor
+     * Set reviews
+     *
+     * @param \WCS\CoavBundle\Entity\Review $reviews
+     *
+     * @return User
      */
-    public function __construct()
+    public function setReviews(\WCS\CoavBundle\Entity\Review $reviews)
     {
-        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reviews = $reviews;
+
+        return $this;
+    }
+
+    /**
+     * Get reviews
+     *
+     * @return \WCS\CoavBundle\Entity\Review
+     */
+    public function getReviews()
+    {
+        return $this->reviews;
     }
 
     /**

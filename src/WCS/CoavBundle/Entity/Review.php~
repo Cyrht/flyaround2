@@ -12,6 +12,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Review
 {
+    /* Adding personal methods */
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->id . " - " .  $this->note;
+    }
+
+
     /**
      * @var int
      *
@@ -29,16 +40,16 @@ class Review
     private $text;
 
     /**
-     * @var int
+     * @var User $userRated
      *
-     * @ORM\Column(name="userRated", type="integer")
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\User")
      */
     private $userRated;
 
     /**
-     * @var int
+     * @var User $reviewAuthor
      *
-     * @ORM\Column(name="reviewAuthor", type="integer")
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\User")
      */
     private $reviewAuthor;
 
@@ -108,7 +119,7 @@ class Review
     /**
      * Get userRated
      *
-     * @return string
+     * @return \WCS\CoavBundle\Entity\User
      */
     public function getUserRated()
     {
