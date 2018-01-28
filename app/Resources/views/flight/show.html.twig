@@ -55,7 +55,7 @@
             <tr>
                 <th>Durée</th>
                 <td>
-                    {{ duration }} heures
+                    {% if duration %} {{ duration }}{% endif %} Heures
                 </td>
             </tr>
             <tr>

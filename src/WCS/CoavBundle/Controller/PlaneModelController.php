@@ -6,6 +6,7 @@ use WCS\CoavBundle\Entity\PlaneModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use WCS\CoavBundle\Service\FlightInfos;
 
 /**
  * Planemodel controller.
@@ -63,7 +64,7 @@ class PlaneModelController extends Controller
      * @Route("/{id}", name="planemodel_show")
      * @Method("GET")
      */
-    public function showAction(PlaneModel $planeModel)
+    public function showAction(PlaneModel $planeModel, FlightInfos $flightInfos)
     {
         $deleteForm = $this->createDeleteForm($planeModel);
 
