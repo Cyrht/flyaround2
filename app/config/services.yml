@@ -19,6 +19,16 @@ services:
         tags:
             - { name: form.type, alias: app_user_registration }
 
+    WCS\CoavBundle\:
+        resource: '../../src/WCS/CoavBundle/*'
+        exclude: '../../src/WCS/CoavBundle/{Entity,Repository,Tests}'
+
+    WCS\CoavBundle\Service\FlightInfos:
+        arguments:
+            $unit:    '%unit%'
+#        class: TRMainBundle\Services\MailerService
+#            arguments: ['@service','%parameter%','value']
+
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     #AppBundle\:
