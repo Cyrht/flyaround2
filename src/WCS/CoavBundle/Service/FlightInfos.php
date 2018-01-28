@@ -62,14 +62,15 @@ class FlightInfos
     }
 
     /**
-     * @param $distance
+     * @param $travelDistance
      * @param $cruiseSpeed
      *
      * @return int
      */
-    public function getDuration($distance, $cruiseSpeed){
+    public function getDuration($cruiseSpeed,$travelDistance)
+    {
 
-        $duration = $distance/$cruiseSpeed;
+        $duration = round ($travelDistance/$cruiseSpeed);
 
         return $duration;
 
